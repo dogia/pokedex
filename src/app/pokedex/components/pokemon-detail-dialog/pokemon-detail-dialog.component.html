@@ -7,8 +7,8 @@
     </header>
     <main class="pokemon-card-body d-flex">
         <div class="pokemon-image" [ngClass]="pokemon.types[0].type.name">
-            <img [src]="pokemon.sprites.front_default" width="96" height="96" alt="Imagen del pokemón frontal" priority>
-            <img [src]="pokemon.sprites.back_default" width="96" height="96" alt="Imagen del pokemón de espalda" priority>
+            <img loading="lazy" [src]="pokemon.sprites.front_default" width="96" height="96" alt="Imagen del pokemón frontal" priority>
+            <img loading="lazy" [src]="pokemon.sprites.back_default" width="96" height="96" alt="Imagen del pokemón de espalda" priority>
         </div>
         <div class="w-100">
             <div>
