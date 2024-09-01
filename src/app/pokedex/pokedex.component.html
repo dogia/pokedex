@@ -1,0 +1,42 @@
+<header>
+    <section class="container">
+        <div class="d-flex">
+            <div class="title w-100">
+                <img height="48" src="https://cdn-icons-png.flaticon.com/512/188/188940.png" alt="">
+                Pokédex
+            </div>
+            <div class="d-flex text-nowrap">
+                <form class="search" (submit)="onSubmitSearch($event)">
+                    <input class="no-border" type="search" name="search" placeholder="Busca aquí..." [formControl]="searchControl">
+                </form>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main class="container">
+    <aside>
+        <section class="items-responsive">
+            @for (pokemon of pokemons; track pokemon) {
+                <app-pokemon-card [pokemon]="pokemon" (click)="openPokemonDetail(pokemon)"/>
+            }
+            @if(pokemons.length === 0) {
+                <legend class="m-auto">No se han encontrado resultados.</legend>
+            }
+        </section>
+        <div
+            infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            [fromRoot]="true"
+            (scrolled)="nextPage()">
+        </div>
+    </aside>
+</main>
+
+<footer>
+
+</footer>
+
+<!-- <app-poke-screen (selectedPokemon)="selectedPokemon"></app-poke-screen>
+<app-poke-description (selectedPokemon)="selectedPokemon"></app-poke-description> -->

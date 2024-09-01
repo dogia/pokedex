@@ -1,0 +1,14 @@
+@import "../../../../pokemon-types.scss";
+
+
+.pokemon-type {
+    padding: 0 0.5em;
+    margin: 0.5em;
+    border-radius: 2px;
+}
+
+@each $type, $color in $pokemon-types {
+    .#{$type} {
+        background-color: $color;
+    }
+}

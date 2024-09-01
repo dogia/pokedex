@@ -1,0 +1,35 @@
+@import "../../../../pokemon-types.scss";
+
+.pokemon-card {
+  width: 100%;
+
+  &-header {
+    font-weight: 700;
+  }
+
+  &-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		height: 96px;
+	}
+  }
+
+  @each $type, $color in $pokemon-types {
+    &-body.#{$type} {
+      background-color: rgba($color, 0.7);
+    }
+  }
+
+  &-footer {
+    font-size: small;
+    padding: 0.5em;
+  }
+
+  padding: 0.5em;
+  background-color: $card-color;
+  color: #ffffff;
+  border-radius: 2px;
+}

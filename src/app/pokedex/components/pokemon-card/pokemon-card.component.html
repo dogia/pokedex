@@ -1,0 +1,27 @@
+<article class="pokemon-card">
+    <header class="pokemon-card-header d-flex">
+        <span class="w-100">{{pokemon.name | titlecase}}</span>
+        <span class="text-nowrap">N.º {{pokemon.id}}</span>
+    </header>
+    <main class="pokemon-card-body" [ngClass]="pokemon.types[0].type.name">
+        <img [src]="pokemon.sprites.front_default" width="96" height="96" alt="Imagen del pokemón {{pokemon.name}}">
+    </main>
+    <br>
+    <footer class="pokemon-card-footer">
+        <div>
+            @for (type of pokemon.types; track type) {
+                <app-pokemon-type [type]="type"/>
+            }
+        </div>
+        <hr>
+        <div class="d-flex">
+            <span class="w-100">Peso:</span>
+            <span class="text-nowrap">{{pokemon.weight/10}} kg</span>
+        </div>
+
+        <div class="d-flex">
+            <span class="w-100">Altura:</span>
+            <span class="text-nowrap">{{pokemon.height/10}} m</span>
+        </div>
+    </footer>
+</article>

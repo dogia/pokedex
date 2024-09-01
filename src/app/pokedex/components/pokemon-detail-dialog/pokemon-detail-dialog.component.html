@@ -1,0 +1,35 @@
+<section class="container dialog" [ngClass]="pokemon.types[0].type.name">
+    <header>
+        <div class="d-flex">
+            <span class="w-100">{{pokemon.name | titlecase}}</span>
+            <span class="text-nowrap">N.º {{pokemon.id}}</span>
+        </div>
+    </header>
+    <main class="pokemon-card-body d-flex">
+        <div class="pokemon-image" [ngClass]="pokemon.types[0].type.name">
+            <img [src]="pokemon.sprites.front_default" width="96" height="96" alt="Imagen del pokemón frontal" priority>
+            <img [src]="pokemon.sprites.back_default" width="96" height="96" alt="Imagen del pokemón de espalda" priority>
+        </div>
+        <div class="w-100">
+            <div>
+                @for (type of pokemon.types; track type) {
+                    <app-pokemon-type [type]="type"/>
+                }
+            </div>
+            <div class="stats">
+                @for (stat of pokemon.stats; track stat) {
+                    <app-pokemon-stat [stat]="stat"></app-pokemon-stat>
+                }
+            </div>
+            <div class="d-flex" style="padding: 0.5em;">
+                <small class="w-100">Peso: {{pokemon.weight/10}} kg</small>
+                <small class="text-nowrap">Altura: {{pokemon.height/10}} m</small>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <audio *ngIf="pokemon.cries.latest || pokemon.cries.legacy" controls>
+        <source *ngIf="pokemon.cries.latest" [src]="pokemon.cries.latest" type="audio/ogg">
+        <source *ngIf="pokemon.cries.legacy" [src]="pokemon.cries.legacy" type="audio/ogg">
+    </audio>
+</section>
